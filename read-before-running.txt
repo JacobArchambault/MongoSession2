@@ -1,0 +1,29 @@
+if thre were no package.json file, we'd need to run   npm init -y  but if the package.json file is properly put together, then npm init -y is unnecessary.
+
+To install dependencies assuming express, mongoose, express-handlebars, body-parser and express-session, use
+
+    npm install express mongoose express-handlebars body-parser express-session --save
+    npm install @handlebars/allow-prototype-access
+
+mongod needs to be running locally before running index.js
+
+the dependencies in the package.json file should look like this (your version numbers may be different)
+
+"dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.3",
+    "axios": "^0.18.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.0",
+    "mongoose": "^5.9.4"
+  }
+
+and if so, instead of running the two npm install commands, to install the dependencies you only need to run
+
+   npm install
+
+as always, to run index.js
+
+   node index.js

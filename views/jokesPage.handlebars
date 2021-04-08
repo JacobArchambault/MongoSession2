@@ -1,0 +1,25 @@
+<h2>Welcome {{name}}</h2>
+
+<h3>Joke of the Day</h3>
+<p>{{joke}}</p>
+
+<p>I see you still prefer {{flavor}}. <a href="#" id='editLink'>Edit</a>
+
+<form method='post' action="/updateFlavor" id="editForm" style="display: none">
+    <p><input type ='radio' name ='flavor' value = 'Vanilla' checked> Vanilla </p>
+	<p><input type ='radio' name ='flavor' value ='Chocolate'> Chocolate </p>
+	<p><input type ='radio' name ='flavor' value = 'Strawberry' > Strawberry </p>
+	<p><input type='submit'></p>
+</form>
+
+
+<form action='/logout' method='post'>
+<p><input type='submit' value = "Log Out">
+</form>
+
+<script>
+	document.getElementById('editLink').onclick = function() {  
+		document.getElementById('editForm').style.display = 'inline';          
+    };
+</script>
+
