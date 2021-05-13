@@ -21,8 +21,8 @@ data
 
 <script>
 window.onload = function() {
-   var da = new Date();
-   var tm = da.toLocaleTimeString();
+   const da = new Date();
+   const tm = da.toLocaleTimeString();
    document.getElementById('showDate').innerHTML = tm;
 }
 
@@ -39,14 +39,14 @@ document.getElementById('btn2').onclick = function() {  // using DOM methods
 			users = response.data;
 			document.getElementById('data').innerHTML = "";
 			
-			var t = document.createElement('table');
+			const t = document.createElement('table');
 			t.setAttribute('cellspacing', 8);
 			t.innerHTML = "";  // blank out table
 		
 			for(i=0; i<users.length; i++) {
-				var row = t.insertRow(i);
-				var cell1 = row.insertCell(0);
-				var cell2 = row.insertCell(1);
+				const row = t.insertRow(i);
+				const cell1 = row.insertCell(0);
+				const cell2 = row.insertCell(1);
 				cell1.innerHTML = users[i].last_name;
 				cell2.innerHTML = users[i].violations;
 		    }

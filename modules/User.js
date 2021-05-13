@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/userlist');  
 
-var userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
 	username: {type: String, required: true, unique: true},
 	password: {type: String, required: true},
 	first_name: {type: String, required: true},
@@ -14,7 +14,7 @@ var userSchema = new mongoose.Schema({
 });
 
 userSchema.virtual('user_age').get(function() {  
-	var years = Date.now() - this.dob;
+	const years = Date.now() - this.dob;
 	return Math.floor(years / 1000/ 60 / 60 / 24 / 365);
 });
 

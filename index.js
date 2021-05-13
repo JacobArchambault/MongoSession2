@@ -1,12 +1,12 @@
 /*    sessions    uses both mongoose and express-handlebars  */
 /*    also, you will have needed to have already run the addusers 
       program to establish the database records used for this example. */
-var express = require('express');
-var Handlebars = require('handlebars')
-var expressHandlebars = require('express-handlebars');
+const express = require('express');
+const Handlebars = require('handlebars')
+const expressHandlebars = require('express-handlebars');
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 
-var app = express();
+const app = express();
 app.engine('handlebars', expressHandlebars({
 	defaultLayout: 'main',
     handlebars: allowInsecurePrototypeAccess(Handlebars)
@@ -16,11 +16,11 @@ app.set('view engine', 'handlebars');
 
 /* also:   npm install @handlebars/allow-prototype-access  */
 
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var User = require('./modules/User.js');
-var getJoke = require('./modules/jokebank.js');
+const User = require('./modules/User.js');
+const getJoke = require('./modules/jokebank.js');
 
 // storing session data in MemoryStore; use for development purposes only 
 session = require('express-session');  
@@ -79,7 +79,7 @@ app.use("/findusers", function(req, res){
 		    res.render('findUsersForm');	
 	    }
 	    else if (req.method == 'POST') {      // this is an Axios post request
-		    var range = req.body.violationRange;
+		    const range = req.body.violationRange;
 		
 			if(range == "more") 
 				query = {violations: {$gte: 5}};   // set the query object for >= 5

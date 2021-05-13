@@ -1,17 +1,17 @@
 /*    sessions    */
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
-var exphbs = require('express-handlebars'); 
+const exphbs = require('express-handlebars'); 
 app.engine('handlebars', exphbs({defaultLayout: 'main'})); 
 app.set('view engine', 'handlebars');
 
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var User = require('./modules/User.js');
-var getJoke = require('./modules/jokebank.js');
+const User = require('./modules/User.js');
+const getJoke = require('./modules/jokebank.js');
 
 session = require('express-session');  // storing session data in MamoryStore; use for development purposes only 
 app.use(session({secret: "some random text"}));  // secret used to sign the session ID cookie.
@@ -73,7 +73,7 @@ app.use("/findusers", function(req, res){
 		    res.render('findUsersForm');	
 	    }
 	    else if (req.method == 'POST') {      // this is an Axios post request
-		    var range = req.body.violationRange;
+		    const range = req.body.violationRange;
 		
 			if(range == "more") 
 				query = {violations: {$gte: 5}};   // set the query object for >= 5
