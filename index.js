@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var User = require('./modules/User.js');
 var getJoke = require('./modules/jokebank.js');
 
-// storing session data in MamoryStore; use for development purposes only 
+// storing session data in MemoryStore; use for development purposes only 
 session = require('express-session');  
 app.use(session({secret: 'random text', resave: true, saveUninitialized: true}))
 
@@ -41,10 +41,7 @@ app.get('/', function(req, res){
 app.post('/login', function(req, res){  
 	   
 	username = req.body.username;   
-	pw = req.body.password;
-	console.log(req.body);
-	
-	User.findOne( {username: username, password: pw}, function(err, user) {  // test username & pw
+	User.findOne( {username: username, password: req.body.password}, function(err, user) {  // test username & pw
 		if (err) {
 		    res.render('errorPage', {msg : err});
 		}
@@ -55,8 +52,7 @@ app.post('/login', function(req, res){
 			req.session.loggedIn = username;        // set loggedIn session variable to username
 		    req.session.flavor = user.preference;   // get flavor, age, fullname from db, set in session
 			req.session.age = user.user_age;
-			req.session.name = user.full_name;
-			
+			req.session.name = user.full_name;			
     		res.render('homePage', {name: req.session.name, age: req.session.age, flavor: req.session.flavor} ); 
 		}
     });   
