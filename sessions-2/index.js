@@ -53,18 +53,6 @@ app.post('/login', function(req, res){
 	
 });
 
-
-app.get("/weather", function(req, res){
-	if(req.session.loggedIn){
-	    res.render('getWeather');  // getWeather template will make request to geonames web service
-	}
-	else {
-		res.render('loginForm');
-	}
-	
-});
-
-
 app.use("/findusers", function(req, res){
 
 	if(req.session.loggedIn){    // if logged in
